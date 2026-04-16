@@ -1,0 +1,113 @@
+/**
+ * HMO design system — warm paper + forest accent (see Docs/HMO_Frontend_Design.html).
+ * Toggled via next-themes `data-theme` on <html>.
+ */
+html {
+  color-scheme: light;
+
+  /* Design primitives */
+  --ink: #0f1117;
+  --ink-2: #2a2d3a;
+  --ink-3: #5a5e6e;
+  --ink-4: #9da3b4;
+  --paper: #faf9f6;
+  --paper-2: #f2f0ea;
+  --paper-3: #e8e5dc;
+  --white: #ffffff;
+  --accent: #1a5f3f;
+  --accent-2: #2d8a60;
+  --accent-light: #e8f5ee;
+  --accent-mid: #b8ddc8;
+  --amber: #d4760a;
+  --amber-light: #fef3e2;
+  --red: #c0392b;
+  --red-light: #fdecea;
+  --blue: #1a4a7a;
+  --blue-light: #e8f0fa;
+  --border-design: rgba(15, 17, 23, 0.1);
+  --border-strong: rgba(15, 17, 23, 0.18);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-design: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  /* shadcn / Tailwind semantic mapping */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted: var(--ink-3);
+  --primary: var(--accent);
+  --primary-foreground: #ffffff;
+  --card: var(--white);
+  --card-foreground: var(--ink);
+  --border: var(--border-design);
+  --ring: var(--accent-2);
+  --destructive: var(--red);
+  --surface: var(--paper-2);
+  --surface-strong: var(--paper-3);
+  --hero: var(--accent);
+  --hero-soft: var(--ink-3);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --topnav-height: 52px;
+  --sidebar-width: 300px;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #14161c;
+  --foreground: #f4f3ef;
+  --muted: #9da3b4;
+  --primary: #3d9b6e;
+  --primary-foreground: #0a0c0f;
+  --card: #1c1f27;
+  --card-foreground: #f4f3ef;
+  --border: rgba(255, 255, 255, 0.1);
+  --ring: #3d9b6e;
+  --destructive: #e85d4c;
+  --surface: #22262f;
+  --surface-strong: #2a2f3a;
+  --hero: #3d9b6e;
+  --hero-soft: #9da3b4;
+  --ink-2: #e2e1dc;
+  --ink-3: #9da3b4;
+  --ink-4: #6b7080;
+  --paper: #14161c;
+  --paper-2: #1c1f27;
+  --paper-3: #252a33;
+  --white: #1c1f27;
+  --accent-light: rgba(61, 155, 110, 0.15);
+  --accent-mid: #2d6b4e;
+  --border-design: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] {
+    color-scheme: dark;
+    --background: #14161c;
+    --foreground: #f4f3ef;
+    --muted: #9da3b4;
+    --primary: #3d9b6e;
+    --primary-foreground: #0a0c0f;
+    --card: #1c1f27;
+    --card-foreground: #f4f3ef;
+    --border: rgba(255, 255, 255, 0.1);
+    --ring: #3d9b6e;
+    --destructive: #e85d4c;
+    --surface: #22262f;
+    --surface-strong: #2a2f3a;
+    --hero: #3d9b6e;
+    --hero-soft: #9da3b4;
+    --ink: #f4f3ef;
+    --ink-2: #e2e1dc;
+    --ink-3: #9da3b4;
+    --ink-4: #6b7080;
+    --paper: #14161c;
+    --paper-2: #1c1f27;
+    --paper-3: #252a33;
+    --white: #1c1f27;
+    --accent-light: rgba(61, 155, 110, 0.15);
+    --accent-mid: #2d6b4e;
+    --border-design: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+  }
+}
