@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getErrorMessage } from "@/lib/api/error-message";
+import { ChangePasswordCard } from "@/features/auth/change-password-card";
 import {
   useCreateTenantProfileMeMutation,
   useGetTenantProfileMeQuery,
@@ -187,6 +188,7 @@ export function TenantProfileView() {
             </Formik>
           </CardContent>
         </Card>
+        <ChangePasswordCard />
       </div>
     );
   }
@@ -308,6 +310,7 @@ export function TenantProfileView() {
           </Formik>
         </CardContent>
       </Card>
+      <ChangePasswordCard />
     </div>
   );
 }

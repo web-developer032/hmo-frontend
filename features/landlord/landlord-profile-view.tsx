@@ -19,6 +19,7 @@ import {
   useUpdateLandlordProfileMutation,
 } from "@/lib/api/endpoints/landlord-profile.endpoints";
 import { getErrorMessage } from "@/lib/api/error-message";
+import { ChangePasswordCard } from "@/features/auth/change-password-card";
 import { useAppSelector } from "@/lib/hooks";
 
 const schema = Yup.object({
@@ -168,6 +169,7 @@ export function LandlordProfileView() {
           </Formik>
         </CardContent>
       </Card>
+      <ChangePasswordCard />
     </div>
   );
 }

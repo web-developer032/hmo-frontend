@@ -71,6 +71,59 @@ export const authApi = hmoApi.injectEndpoints({
       query: () => ({ url: "users/me", method: "GET" }),
       providesTags: tagEntire(T.Auth),
     }),
+    forgotPassword: builder.mutation<ApiSuccess<{ ok: boolean }>, { email: string }>(
+      {
+        query: (body) => ({
+          url: "auth/forgot-password",
+          method: "POST",
+          body,
+        }),
+      },
+    ),
+    resetPassword: builder.mutation<
+      ApiSuccess<AuthPayload>,
+      { token: string; newPassword: string }
+    >({
+      query: (body) => ({
+        url: "auth/reset-password",
+        method: "POST",
+        body,
+      }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          if (data?.data) {
+            persistRefreshOnly(data.data.refreshToken, data.data.expiresIn);
+            setAuthenticatedCookie();
+            dispatch(setCredentials(data.data));
+          }
+        } catch {
+          /* surfaced via unwrap() in UI */
+        }
+      },
+    }),
+    updatePassword: builder.mutation<
+      ApiSuccess<AuthPayload>,
+      { currentPassword: string; newPassword: string }
+    >({
+      query: (body) => ({
+        url: "auth/update-password",
+        method: "POST",
+        body,
+      }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          if (data?.data) {
+            persistRefreshOnly(data.data.refreshToken, data.data.expiresIn);
+            setAuthenticatedCookie();
+            dispatch(setCredentials(data.data));
+          }
+        } catch {
+          /* surfaced via unwrap() in UI */
+        }
+      },
+    }),
   }),
   overrideExisting: true,
 });
@@ -81,4 +134,7 @@ export const {
   useLogoutMutation,
   useLogoutAllMutation,
   useLazyGetMeQuery,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+  useUpdatePasswordMutation,
 } = authApi;
