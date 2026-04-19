@@ -10,11 +10,17 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/page-header";
+import { ChangePasswordCard } from "@/features/auth/change-password-card";
 import {
   getNavSectionsForUser,
   shouldShowLandlordDashboardFeatures,
   type ActiveNavFilter,
 } from "@/lib/navigation/role-nav";
+
+function isAdminOnlyAccount(roles: string[]) {
+  const r = new Set(roles.map((x) => x.toLowerCase()));
+  return r.has("admin") && !r.has("landlord") && !r.has("tenant");
+}
 
 function StatTile({
   label,
@@ -170,6 +176,12 @@ export function DashboardHub({
             </Button>
           </CardContent>
         </Card>
+      )}
+
+      {isAdminOnlyAccount(roles) && (
+        <div className="mx-auto max-w-lg">
+          <ChangePasswordCard />
+        </div>
       )}
     </div>
   );
